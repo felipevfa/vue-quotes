@@ -1,9 +1,14 @@
 <template>
   <div>
       <h3>Quotes Added</h3>
+      <div class="alert alert-danger" role="alert" v-if="store.isFull">
+          Maximum number of quotes reached! You cannot add new quotes.
+      </div>
+      
       <div class="progress" style="height: 20px;">
           <div class="progress-bar" role="progressbar" 
               :style="width"
+              style="min-width: 40px;"
               :aria-valuenow="store.getQuotes().length" aria-valuemin="0" aria-valuemax="10">{{ store.getQuotes().length }}/10</div>
       </div>
   </div>

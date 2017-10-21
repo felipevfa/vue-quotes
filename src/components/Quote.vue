@@ -1,6 +1,6 @@
 <template>
   <div class="col-xs-12 col-md-6 col-lg-4 col-xl-3 quote">
-        <div @click="key" class="card">
+        <div @click="removeQuote" class="card">
             <div class="card-body">
                 <slot></slot>
             </div>
@@ -9,14 +9,16 @@
 </template>
 
 <script>
+import { store } from '../main.js'
+
 export default {
     props: {
         id: Number
     },
     methods: {
-        key() {
-            console.log("Id: " + this.id)
-        }
+        removeQuote() {
+            store.$emit('destroyChild', this.id)
+        }        
     }
 }
 </script>
@@ -24,5 +26,8 @@ export default {
 <style>
 .quote {
     padding: 10px;    
+}
+.card:hover {
+    background-color: lightpink;
 }
 </style>

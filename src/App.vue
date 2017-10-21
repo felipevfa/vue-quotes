@@ -3,6 +3,10 @@
         <app-header></app-header>
         <app-new-quote></app-new-quote>
         <app-quotes></app-quotes>
+
+        <div class="alert alert-primary text-center" role="alert">
+            Info: Click on a Quote to delete it!
+        </div>
     </div>
 </template>
 

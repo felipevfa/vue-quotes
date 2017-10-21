@@ -9,17 +9,23 @@ export const store = new Vue({
   },
   methods: {
     addQuote(quote) {
-      if (this.quotes.length < 10)
-        this.quotes.push(quote)
-    },
-    removeQuote(index) {
-
+      if (!this.isFull)
+        this.quotes.unshift(quote)
     },
     getQuotes() {
       return this.quotes
     }
+  },
+  computed: {
+    isFull: function() {
+      return this.quotes.length >= 10
+    }
   }
 });
+
+store.$on('destroyChild', (index) => {
+  store.quotes.splice(index, 1)
+})
 
 new Vue({
   el: '#app',
